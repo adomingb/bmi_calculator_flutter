@@ -6,7 +6,7 @@ class ReusableCard extends StatelessWidget {
       required this.colour,
       required this.cardChild});
 
-  final Function cardFunction;
+  final Function() cardFunction;
   final Color colour;
   final Widget cardChild;
 
@@ -15,12 +15,12 @@ class ReusableCard extends StatelessWidget {
     return GestureDetector(
       onTap: cardFunction,
       child: Container(
-        child: cardChild,
         margin: const EdgeInsets.all(15.0),
         decoration: BoxDecoration(
           color: colour,
           borderRadius: BorderRadius.circular(10.0),
         ),
+        child: cardChild,
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'constants.dart';
 
 class ReusableChild extends StatelessWidget {
   const ReusableChild(this.icono, this.texto);
@@ -13,17 +14,14 @@ class ReusableChild extends StatelessWidget {
       children: [
         Icon(
           icono,
-          size: 80.0,
+          size: 70.0,
         ),
         const SizedBox(
           height: 15.0,
         ),
         Text(
           texto,
-          style: const TextStyle(
-            fontSize: 18.0,
-            color: Color(0xFF8D8E98),
-          ),
+          style: kLabelTextStyle,
         ),
       ],
     );
