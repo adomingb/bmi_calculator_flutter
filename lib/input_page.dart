@@ -17,11 +17,14 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Gender selectedGender = Gender.male;
   int height = 180;
+  int weight = 75;
+  int age = 30;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color(0xFF0A0E21),
         title: const Center(child: Text('BMI CALCULATOR')),
       ),
       body: Column(
@@ -103,7 +106,7 @@ class _InputPageState extends State<InputPage> {
                         });
                       },
                       min: 120.0,
-                      max: 220,
+                      max: 220.0,
                     ),
                   )
                 ],
@@ -119,7 +122,40 @@ class _InputPageState extends State<InputPage> {
                     colour: kActiveCardColor,
                     cardChild: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [],
+                      children: [
+                        Text(
+                          'WEIGHT',
+                          style: kLabelTextStyle,
+                        ),
+                        Text(
+                          weight.toString(),
+                          style: kNumberTextStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RoundedIconButton(
+                              icono: FontAwesomeIcons.minus,
+                              buttonFunction: () {
+                                setState(() {
+                                  weight--;
+                                });
+                              },
+                            ),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            RoundedIconButton(
+                              icono: FontAwesomeIcons.plus,
+                              buttonFunction: () {
+                                setState(() {
+                                  weight++;
+                                });
+                              },
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -129,7 +165,40 @@ class _InputPageState extends State<InputPage> {
                     colour: kActiveCardColor,
                     cardChild: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [],
+                      children: [
+                        Text(
+                          'AGE',
+                          style: kLabelTextStyle,
+                        ),
+                        Text(
+                          age.toString(),
+                          style: kNumberTextStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RoundedIconButton(
+                              icono: FontAwesomeIcons.minus,
+                              buttonFunction: () {
+                                setState(() {
+                                  age--;
+                                });
+                              },
+                            ),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            RoundedIconButton(
+                              icono: FontAwesomeIcons.plus,
+                              buttonFunction: () {
+                                setState(() {
+                                  age++;
+                                });
+                              },
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -145,5 +214,26 @@ class _InputPageState extends State<InputPage> {
         ],
       ),
     );
+  }
+}
+
+class RoundedIconButton extends StatelessWidget {
+  RoundedIconButton({required this.icono, required this.buttonFunction});
+
+  final IconData icono;
+  final Function() buttonFunction;
+
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+        elevation: 6.0,
+        constraints: BoxConstraints.tightFor(
+          width: 56.0,
+          height: 56.0,
+        ),
+        shape: CircleBorder(),
+        fillColor: Color(0xFF4C4F5E),
+        onPressed: buttonFunction,
+        child: Icon(icono));
   }
 }
