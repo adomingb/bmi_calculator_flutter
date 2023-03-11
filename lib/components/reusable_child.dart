@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'constants.dart';
+import '../constants.dart';
 
 class ReusableChild extends StatelessWidget {
   const ReusableChild(this.icono, this.texto);
